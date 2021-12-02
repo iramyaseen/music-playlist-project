@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&family=Roboto:wght@100;400&display=swap');
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main_cart{
+    border: 2px solid gainsboro;
+    width: 380px;
+    box-shadow: 7px 10px 20px 20px lightgrey;
+    border-radius: 10px;
+
+}
+.song_head{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    font-size: 20px;
+}
+.song_head h4{
+    font-size: 30px;
+}
+.display{
+    display: flex;
+}
+.display i{
+    margin-right: 10px;
+}
+.song_img, .song_name, .progress_bar, .song_icon{
+    text-align: center;
+}
+.song_img img{
+    border: 2px solid white;
+    border-radius: 50%;
+    animation: rotate 9s linear infinite;
+    animation-play-state: paused;
+}
+.main_cart.play .song_img img {
+    animation-play-state: running;
+  }
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+.music_info{
+    padding-top: 20px;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+.song_icon{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.fa-step-backward, .fa-play, .fa-pause, .fa-step-forward{
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 2px solid lightgrey;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#title{
+    text-align: center;
+    text-transform: capitalize;
+}
+.note{
+    padding-top: 30px;
+    text-align: center;
+}
+.note span{
+    display: block;
+}

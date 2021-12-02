@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Little Music App</title>
+    <link rel="stylesheet" href="./style.css" />
+    <!--  -->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <section class="bg_color">
+      <div class="main_cart" id="main_cart">
+        <div class="song_head">
+          <div><i class="far fa-angle-down"></i></div>
+          <div>Now Playing</div>
+          <div><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+        <div class="song_img">
+          <img id="cover" src="" alt="" width="50%" />
+        </div>
+        <div class="music_info">
+          <h4 id="title"></h4>
+        </div>
+        <audio id="audio" src=""></audio>
+        <div class="song_icon">
+          <div class="display">
+            <i id="prev" class="fas fa-step-backward"></i>
+            <div id="play">
+              <i class="fas fa-play" ondblclick="playbtn2()"></i>
+            </div>
+            <i id="next" class="fas fa-step-forward"></i>
+          </div>
+        </div>
+        
+      </div>
+      <h5 class="note">
+          <span>On one click song is play</span>
+           <span>then double click song is paused</span>
+        </h5>
+    </section>
+  </body>
+  <script>
+    var title = document.getElementById("title");
+    var playbtn = document.getElementById("play");
+    var next = document.getElementById("next");
+    var prev = document.getElementById("prev");
+    var audio = document.getElementById("audio");
+    var cover = document.getElementById("cover");
+    var main_cart = document.getElementById("main_cart");
+    const songs = [
+      "Hoye Ishq Na Tadap",
+      "Kalle Kalle Chandigarh Kare Aashiqui",
+      "Tere Siva Jag Mein Tadap",
+      "Tu Mera Ho Gaya Hai Tadap",
+      "Pyaar Karte Ho Na Javed Mohsin",
+      "Tumbe Te Zumba Chandigarh Kare Aashiqui",
+    ];
+    let songsIndex = 5;
+    //
+    loadSong(songs[songsIndex]);
+    // loading song and images
+    function loadSong(song) {
+      title.innerText = song;
+      audio.src = `./Songs/${song}.mp3`;
+      cover.src = `./songs images/${song}.jpg`;
+    }
+    // next btn
+    next.addEventListener("click", () => {
+      songsIndex++;
+      if (songsIndex > songs.length - 1) {
+        songsIndex = 0;
+      }
+      loadSong(songs[songsIndex]);
+      playSong();
+    });
+
+    // prev btn
+    prev.addEventListener("click", () => {
+      songsIndex--;
+      if (songsIndex < 0) {
+        songsIndex = songs.length - 1;
+      }
+      loadSong(songs[songsIndex]);
+      playSong();
+    });
+
+    //Play
+    playbtn.addEventListener("click", () => {
+      main_cart.classList.add("play");
+      playbtn.querySelector("i.fas").classList.remove("fa-play");
+      playbtn.querySelector("i.fas").classList.add("fa-pause");
+      audio.play();
+    });
+    // Pause
+    function playbtn2() {
+      main_cart.classList.remove("play");
+      playbtn.querySelector("i.fas").classList.add("fa-play");
+      playbtn.querySelector("i.fas").classList.remove("fa-pause");
+      audio.pause();
+    }
+  </script>
+</html>
